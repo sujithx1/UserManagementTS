@@ -1,0 +1,303 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>welcome <%= user %> to my website</h1>
+    <button id="edit">Edit</button>
+    <button id="logout">logout</button>
+</body>
+<script>
+    document.getElementById('edit').addEventListener('click',async()=>{
+     window.location.href="/edit?name=<%= user %>"
+    })
+    document.getElementById('logout').addEventListener('click',async()=>{
+        window.location.href="/logout"
+       
+    })
+</script>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #edit {
+            background-color: #5cb85c;
+            color: white;
+        }
+        #edit:hover {
+            background-color: #4cae4c;
+        }
+        #logout {
+            background-color: #d9534f;
+            color: white;
+        }
+        #logout:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome <%= user %> to my website</h1>
+        <button id="edit">Edit</button>
+        <button id="logout">Logout</button>
+    </div>
+    
+</body>
+<script>
+    document.getElementById('edit').addEventListener('click',async()=>{
+     window.location.href="/edit?name=<%= user %>"
+    })
+    document.getElementById('logout').addEventListener('click',async()=>{
+        window.location.href="/logout"
+       
+    })
+</script>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #edit {
+            background-color: #007bff;
+            color: white;
+        }
+        #edit:hover {
+            background-color: #0056b3;
+        }
+        #logout {
+            background-color: #dc3545;
+            color: white;
+        }
+        #logout:hover {
+            background-color: #c82333;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .modal-header, .modal-footer {
+            padding: 10px;
+        }
+        .modal-header {
+            border-bottom: 1px solid #e9ecef;
+        }
+        .modal-footer {
+            border-top: 1px solid #e9ecef;
+            text-align: right;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-body form {
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-body form label {
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        .modal-body form input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .btn-save {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .btn-save:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome <%= user.name %> to my website</h1>
+        <button id="edit">Edit</button>
+        <button id="logout">Logout</button>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Edit User</h2>
+            </div>
+            <div class="modal-body">
+                <form id="edit-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="<%= user.name %>" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="<%= user.email %>" required>
+                    <label for="mobile">Mobile:</label>
+                    <input type="text" id="mobile" name="mobile" value="<%= user.mobile %>" required>
+                    <input type="hidden" id="id" name="id" value="<%= user._id %>">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" form="edit-form" class="btn-save">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const editButton = document.getElementById('edit');
+            const logoutButton = document.getElementById('logout');
+            const modal = document.getElementById('editModal');
+            const closeModal = document.getElementsByClassName('close')[0];
+            const editForm = document.getElementById('edit-form');
+
+            // Open Modal
+            editButton.addEventListener('click', () => {
+                modal.style.display = 'flex';
+            });
+
+            // Close Modal
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // Logout
+            logoutButton.addEventListener('click', () => {
+                window.location.href = '/logout';
+            });
+
+            // Close the modal if the user clicks outside of it
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Handle form submission
+            editForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const mobile = document.getElementById('mobile').value;
+                const id=document.getElementById('id').value;
+
+                try {
+                    const response = await fetch('/edit', {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ id ,name, email, mobile })
+                    });
+
+                    if (response.ok) {
+                        // alert('User information updated successfully!');
+                        modal.style.display = 'none';
+                        window.location.reload();
+                    } else {
+                        alert('Failed to update user information.');
+                    }
+                } catch (error) {
+                    console.error('Error updating user information:', error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

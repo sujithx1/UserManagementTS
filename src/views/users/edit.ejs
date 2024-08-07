@@ -1,0 +1,54 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form id="edit_form">
+        <label > name</label>
+        <input type="text" id="name" name="name" value="<%= user.name%>">
+        <label > email</label>
+        <input type="text" id="email" name="email" value="<%= user.email %>">
+        <label >mobile</label>
+        <input type="text" id="mobile" name="mobile" value="<%= user.mobile %>">
+        <input type="hidden" id="id" name="id" value="<%=user._id%>">
+        <button type="submit">Save</button>
+
+    </form>
+    
+</body>
+<script>
+     document.getElementById('edit_form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const id = document.getElementById('id').value;
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const mobile = document.getElementById('mobile').value;
+
+    try {
+        const response = await fetch('/edit', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id, name, email, mobile })
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log("User updated successfully", data);
+            window.location.href = '/home'; 
+        } else {
+            console.error('Error updating user:', await response.json());
+        }
+    } catch (error) {
+        console.error('Error submitting form', error);
+    }
+
+});
+</script>
+</html> -->
